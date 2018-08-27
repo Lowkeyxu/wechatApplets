@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo" style='float:left'>
+    <button wx:if="{{!hasUserInfo}}" lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="userDetail" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view style='float:left'>
+  <image bindtap='play' src='../resources/timg.jpg' style='width:30px;height:30px'></image>
+  <image bindtap='start' src='../resources/recorder.jpg' style='width:30px;height:30px'></image>
+  </view>
+</view>
+<map id="map" 
+  longitude="{{longitude}}" 
+  latitude="{{latitude}}"
+  scale="14"  
+  bindcontroltap="controltap"  
+  bindmarkertap="markertap" 
+  bindregionchange="regionchange" 
+  show-location style="width: 100%; height: 300px;">
+</map>
+<text>您的定位点：{{address}}\n</text>
+<text>经度：{{longitude}}\n</text>
+<text>纬度：{{latitude}}</text>
